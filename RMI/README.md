@@ -109,3 +109,70 @@ public class RemoteDemTuServer implements DemTu {
 
 </details>
 </details>
+
+# ServerMain.java  
+```java
+public class ServerMain {
+    // định nghĩa tên sv cái này QUAN TRỌNG
+    public static final String NAME = "server.ptb2";
+
+    public static void main(String[] args) throws RemoteException, AlreadyBoundException, InterruptedException {
+        // vd
+        final RemotePTB2Server server = new RemotePTB2Server();
+        final Registry registry = LocateRegistry.createRegistry(2732);
+        Remote stub = UnicastRemoteObject.exportObject(server, 0);
+        registry.bind(NAME, stub);
+        Thread.sleep(Integer.MAX_VALUE);
+
+        // mẫu
+        final (RemoteServer muốn dùng) server = new [...] ();
+
+        // đống này copy dùng lại chứ cx ko có j đặc sắc (cố mà thuộc :)) ) 
+        final Registry registry = LocateRegistry.createRegistry(2732);
+        Remote stub = UnicastRemoteObject.exportObject(server, 0);
+        registry.bind(NAME, stub);
+        Thread.sleep(Integer.MAX_VALUE);
+    }
+}
+```
+
+# ClientMain.java
+```java
+public class ClientMain {
+    // định nghĩa tên sv cái này QUAN TRỌNG
+    public static final String NAME = "server.ptb2";
+
+    public static void main(String[] args) throws RemoteException, NotBoundException {
+        // vd này đc cắt bớt so với code gốc tham khảo full code trong folder RMI_ptb2
+        final Registry registry = LocateRegistry.getRegistry(2732);
+
+        PTB2 ptb2 = (PTB2) registry.lookup(NAME);
+        try {
+            String Result = ptb2.giaiPTB2(1,2,3);
+            System.out.println("Kết quả: " + Result);
+        } catch (NumberFormatException e) {
+            System.out.println("Vui lòng nhập một số nguyên hợp lệ hoặc 'x' để thoát.");
+        }
+
+        // tóm lại trong main thì có 3 phần 
+        // 1 là đăng ký cổng
+        final Registry registry = LocateRegistry.getRegistry(2732);
+        // 2 là đăng ký interface
+        Interface i = (Interface) registry.lookup(NAME);
+        // 3 là dùng 
+        int a = i.foo();
+    }
+}
+```
+
+# BT (Code full từ đầu đến đít nhá :3 code bằng giấy thì càng vjp ) (đáp án sẽ cập nhật sau)
+
+<p align="center">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDBvMjJvNDcxbTVmeWNibDN0cW90NjB2aXFiZng0c2g4aDZsaXQ4bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/uDZexRVCffGww/giphy.gif"/>
+</p>
+
+# 1. Tính tổng
+# 2. Kiểm tra số chẵn
+# 3. Máy tính đơn giản
+# 4. Giải phương trình bậc 1
+# 5. [Giải phương trình bậc 2](https://github.com/gang-gang-67-rau-ma/lap-trinh-mang-java/tree/main/RMI/RMI_ptb2)
