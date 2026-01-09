@@ -171,8 +171,8 @@ public class ClientMain {
     <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDBvMjJvNDcxbTVmeWNibDN0cW90NjB2aXFiZng0c2g4aDZsaXQ4bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/uDZexRVCffGww/giphy.gif"/>
 </p>
 
-# 1. Tính tổng
-# 2. Kiểm tra số chẵn
-# 3. Máy tính đơn giản
-# 4. Giải phương trình bậc 1
-# 5. [Giải phương trình bậc 2](https://github.com/gang-gang-67-rau-ma/lap-trinh-mang-java/tree/main/RMI/RMI_ptb2)
+### 1. [Tính tổng 2 số](https://github.com/gang-gang-67-rau-ma/lap-trinh-mang-java/tree/main/RMI/RMI_1)
+### 2. Kiểm tra số chẵn
+### 3. Máy tính đơn giản
+### 4. Giải phương trình bậc 1
+### 5. [Giải phương trình bậc 2](https://github.com/gang-gang-67-rau-ma/lap-trinh-mang-java/tree/main/RMI/RMI_ptb2)
