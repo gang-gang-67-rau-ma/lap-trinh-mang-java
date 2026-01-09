@@ -1,0 +1,104 @@
+Phương trình: 3.0x^2 + 2.0x + 5.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 7.0x^2 + -8.0x + 1.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 1.0, x2 = 0.14285714285714285
+
+Phương trình: 0.0x^2 + 0.0x + 0.0 = 0 => Phương trình vô số nghiệm.
+
+Phương trình: 0.0x^2 + 0.0x + 6.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 0.0x^2 + 1.0x + 0.0 = 0 => Phương trình bậc nhất, nghiệm: x = -0.0
+
+Phương trình: 0.0x^2 + 6.0x + 2.0 = 0 => Phương trình bậc nhất, nghiệm: x = -0.3333333333333333
+
+Phương trình: 2.0x^2 + 0.0x + 0.0 = 0 => Phương trình có nghiệm kép: x1 = x2 = -0.0
+
+Phương trình: 2.0x^2 + 0.0x + -8.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 2.0, x2 = -2.0
+
+Phương trình: 2.0x^2 + 0.0x + 2.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 6.0x^2 + 5.0x + 0.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 0.0, x2 = -0.8333333333333334
+
+Phương trình: 2.0x^2 + 3.0x + 8.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 6.0x^2 + 1.0x + 2.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 7.0x^2 + 5.0x + 7.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 3.0x^2 + 2.0x + 5.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 7.0x^2 + -8.0x + 1.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 1.0, x2 = 0.14285714285714285
+
+Phương trình: 0.0x^2 + 0.0x + 0.0 = 0 => Phương trình vô số nghiệm.
+
+Phương trình: 0.0x^2 + 0.0x + 6.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 0.0x^2 + 1.0x + 0.0 = 0 => Phương trình bậc nhất, nghiệm: x = -0.0
+
+Phương trình: 0.0x^2 + 6.0x + 2.0 = 0 => Phương trình bậc nhất, nghiệm: x = -0.3333333333333333
+
+Phương trình: 2.0x^2 + 0.0x + 0.0 = 0 => Phương trình có nghiệm kép: x1 = x2 = -0.0
+
+Phương trình: 2.0x^2 + 0.0x + -8.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 2.0, x2 = -2.0
+
+Phương trình: 2.0x^2 + 0.0x + 2.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 6.0x^2 + 5.0x + 0.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 0.0, x2 = -0.8333333333333334
+
+Phương trình: 2.0x^2 + 3.0x + 8.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 6.0x^2 + 1.0x + 2.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 7.0x^2 + 5.0x + 7.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 3.0x^2 + 2.0x + 5.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 7.0x^2 + -8.0x + 1.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 1.0, x2 = 0.14285714285714285
+
+Phương trình: 0.0x^2 + 0.0x + 0.0 = 0 => Phương trình vô số nghiệm.
+
+Phương trình: 0.0x^2 + 0.0x + 6.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 0.0x^2 + 1.0x + 0.0 = 0 => Phương trình bậc nhất, nghiệm: x = -0.0
+
+Phương trình: 0.0x^2 + 6.0x + 2.0 = 0 => Phương trình bậc nhất, nghiệm: x = -0.3333333333333333
+
+Phương trình: 2.0x^2 + 0.0x + 0.0 = 0 => Phương trình có nghiệm kép: x1 = x2 = -0.0
+
+Phương trình: 2.0x^2 + 0.0x + -8.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 2.0, x2 = -2.0
+
+Phương trình: 2.0x^2 + 0.0x + 2.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 6.0x^2 + 5.0x + 0.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 0.0, x2 = -0.8333333333333334
+
+Phương trình: 2.0x^2 + 3.0x + 8.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 6.0x^2 + 1.0x + 2.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 7.0x^2 + 5.0x + 7.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 3.0x^2 + 2.0x + 5.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 7.0x^2 + -8.0x + 1.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 1.0, x2 = 0.14285714285714285
+
+Phương trình: 0.0x^2 + 0.0x + 0.0 = 0 => Phương trình vô số nghiệm.
+
+Phương trình: 0.0x^2 + 0.0x + 6.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 0.0x^2 + 1.0x + 0.0 = 0 => Phương trình bậc nhất, nghiệm: x = -0.0
+
+Phương trình: 0.0x^2 + 6.0x + 2.0 = 0 => Phương trình bậc nhất, nghiệm: x = -0.3333333333333333
+
+Phương trình: 2.0x^2 + 0.0x + 0.0 = 0 => Phương trình có nghiệm kép: x1 = x2 = -0.0
+
+Phương trình: 2.0x^2 + 0.0x + -8.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 2.0, x2 = -2.0
+
+Phương trình: 2.0x^2 + 0.0x + 2.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 6.0x^2 + 5.0x + 0.0 = 0 => Phương trình có hai nghiệm phân biệt: x1 = 0.0, x2 = -0.8333333333333334
+
+Phương trình: 2.0x^2 + 3.0x + 8.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 6.0x^2 + 1.0x + 2.0 = 0 => Phương trình vô nghiệm.
+
+Phương trình: 7.0x^2 + 5.0x + 7.0 = 0 => Phương trình vô nghiệm.
+
