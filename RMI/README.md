@@ -128,7 +128,7 @@ public class ServerMain {
         final (RemoteServer muốn dùng) server = new [...] ();
 
         // đống này copy dùng lại chứ cx ko có j đặc sắc (cố mà thuộc :)) ) 
-        final Registry registry = LocateRegistry.createRegistry(2732);
+        final Registry registry = LocateRegistry.createRegistry(số cổng bạn chọn);
         Remote stub = UnicastRemoteObject.exportObject(server, 0);
         registry.bind(NAME, stub);
         Thread.sleep(Integer.MAX_VALUE);
@@ -156,7 +156,7 @@ public class ClientMain {
 
         // tóm lại trong main thì có 3 phần 
         // 1 là đăng ký cổng
-        final Registry registry = LocateRegistry.getRegistry(2732);
+        final Registry registry = LocateRegistry.getRegistry(số cổng bạn chọn);
         // 2 là đăng ký interface
         Interface i = (Interface) registry.lookup(NAME);
         // 3 là dùng 
