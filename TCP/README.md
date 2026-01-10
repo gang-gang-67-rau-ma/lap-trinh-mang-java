@@ -14,16 +14,34 @@ public class ClientThread extends Thread {
     private Socket socket;
 
     // constructor
-    public Luong_Client(Socket socket) {
+    public ClientThread(Socket socket) {
         this.socket = socket;
     }
 
     @Override
     public void run() {
         try {
-            // logic lam gi do
-        } catch (Exception e) {
+            // tao luong nhan va gui
+            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
+
+            // tao danh sach chuoi lay du lieu tu file
+            List<String> data = doc_file.docFile("folder/input.txt");
+
+            // doc tung dong va gui len server
+            for (String line : data) {
+                pw.println(line);
+                System.out.println("Đã gửi: " + line);
+
+                String response = br.readLine();
+                System.out.println("Nhận từ server: " + response);
+            }
+        }
+        catch (Exception e) {
             e.printStackTrace();
+        }
+        finally {
+            socket.close();
         }
     }
 }
@@ -33,10 +51,8 @@ public class ClientThread extends Thread {
 
 ```java
 public class ServerThread extends Thread {
-    // tao socket
     private Socket socket;
 
-    // constructor
     public ServerThread(Socket socket) {
         this.socket = socket;
     }
@@ -44,8 +60,37 @@ public class ServerThread extends Thread {
     @Override
     public void run() {
         try {
-            // logic lam gi do
-        } catch (Exception e) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
+
+            // nhan du lieu tu client
+            String data;
+
+            while ((data = br.readLine()) != null) {
+                System.out.println("Nhận được: " + data);
+
+                // tach chuoi
+                String[] arr = data.trim().split(";");
+                if (arr.length != 3) {
+                    pw.println("Dữ liệu không hợp lệ: " + data);
+                    continue;
+                }
+
+                try {
+                    double a = Double.parseDouble(arr[0]);
+                    double b = Double.parseDouble(arr[1]);
+                    double c = Double.parseDouble(arr[2]);
+                    String result = giaiptb2(a, b, c);
+                    String q = "Phương trình: " + a + "x^2 + " + b + "x + " + c + " = 0";
+                    String output = q + " => " + result;
+                    pw.println(output);
+                    ghi_file.ghiFile(output + "\n", "folder/output.txt");
+                } catch (NumberFormatException e) {
+                    pw.println("Dữ liệu không hợp lệ: " + data);
+                }
+            }
+        } 
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -60,80 +105,19 @@ public class ServerThread extends Thread {
 # 3. ClientMain.java
 
 ```java
-import java.net.*;
-import java.io.*;
-import java.util.Scanner;
-
 public class ClientTCP {
-
-    private Socket socket;
-    private DataInputStream in;
-    private DataOutputStream out;
-
-    // Hàm khởi tạo kết nối
-    public void startClient(String ip, int port) {
-        try {
-            this.socket = new Socket(ip, port);
-            this.in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-            this.out = new DataOutputStream(socket.getOutputStream());
-
-            // Luồng nhận dữ liệu từ Server
-            new Thread(() -> { listenServer(); }).start();
-
-            // Luồng gửi dữ liệu lên Server
-            sendRequest();
-
-        } catch (Exception e) {}
-    }
-
-    // Hàm đóng kết nối
-    public void closeClient() {
-        try {
-            if (this.socket != null) {
-                this.socket.close();
-            }
-        } catch (Exception e) {}
-    }
-
-    // Hàm lắng nghe dữ liệu từ Server
-    private void listenServer() {
-        try {
-            while (true) {
-                String response = in.readUTF();
-                processServerResponse(response);
-            }
-        } catch (Exception e) {
-            closeClient();
-        }
-    }
-
-    // Hàm xử lý gửi yêu cầu
-    private void sendRequest() {
-        try {
-            while (true) {
-                String message = getInput();
-                out.writeUTF(message);
-                out.flush();
-            }
-        } catch (Exception e) {
-            closeClient();
-        }
-    }
-
-    // Hàm lấy input (từ bàn phím)
-    private String getInput() {
-        Scanner sc = new Scanner(System.in);
-        return sc.nextLine();
-    }
-
-    // Hàm xử lý dữ liệu nhận được từ Server (hiển thị UI, xử lý logic...)
-    private void processServerResponse(String data) {
-        // Logic xử lý phản hồi từ Server
-    }
-
-    // Main chạy client
     public static void main(String[] args) {
-        new ClientTCP().startClient("localhost", 3636);
+        try {
+            // khoi tao client noi den server
+            Socket socket = new Socket("localhost", 9999);
+            System.out.println("Da ket noi den server");
+
+            // khoi tao luong client de bat dau cong viec
+            ClientThread lc = new ClientThread(socket);
+            lc.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 ```
@@ -141,64 +125,181 @@ public class ClientTCP {
 # 4. ServerMain.java
 
 ```java
-import java.net.*;
-import java.io.*;
-
 public class ServerTCP {
-
-    private ServerSocket ss;
-    private int port;
-
-    // Hàm khởi tạo seversocket + lắng nghe client
-    public void startServer(int port) {
-        this.port = port;
+        public static void main(String[] args) {
         try {
-            this.ss = new ServerSocket(this.port);
-            new Thread(() -> { listenClient(); }).start();
-        } catch (Exception e) {}
-    }
+            // khoi tao server o cong 9999
+            ServerSocket server = new ServerSocket(9999);
+            System.out.println("Server da san sang");
 
-    // Hàm đóng server
-    public void closeServer() {
-        try {
-            if (this.ss != null) {
-                this.ss.close();
-            }
-        } catch (Exception e) {}
-    }
-
-    // Hàm lắng nghe client socket
-    private void listenClient() {
-        while (!this.ss.isClosed()) {
-            try {
-                Socket s = ss.accept();
-                new Thread(() -> handleClient(s)).start();
-            } catch (Exception e) {}
-        }
-    }
-
-    // Hàm xử lý I/O cho Client
-    private void handleClient(Socket s) {
-        try (DataInputStream in = new DataInputStream(new BufferedInputStream(s.getInputStream())); 
-            DataOutputStream output = new DataOutputStream(s.getOutputStream()); ) {
+            // lang nghe client
             while (true) {
-                String message = in.readUTF();
-                String data = processClientRequest(message);
-                output.writeUTF(data);
-                output.flush();
+                Socket socket = server.accept();
+                System.out.println("Co ket noi moi: " + socket.getInetAddress().getHostAddress());
+                // khoi tao luong server de xu li
+                ServerThread sv = new ServerThread (socket);
+                ls.start();
             }
-        } catch (Exception e) {}
-    }
-
-    // Hàm xử lý dữ liệu Client gửi lên, tính PTB2, ...
-    private String processClientRequest(String data) {
-        // Xử lý yêu cầu của người dùng
-        return processedData;
-    }
-
-    // Main chạy server
-    public static void main(String[] args) {
-        new ServerTCP().startServer(3636);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 ```
+
+# BT (code full từ đầu đến đít theo cấu trúc ở trên nhá)
+
+# 1 – XỬ LÝ CHUỖI (CƠ BẢN)
+### 📌 Yêu cầu
+
+* Client đọc từng dòng từ file `input.txt`
+* Gửi từng dòng lên Server
+* Server xử lý và trả về:
+
+  * Chuỗi in hoa
+  * Số ký tự của chuỗi
+* Client in kết quả ra màn hình
+
+### 📥 Ví dụ
+
+**Client gửi**
+
+```
+lap trinh mang
+```
+
+**Server trả**
+
+```
+IN HOA: LAP TRINH MANG | SO KY TU: 15
+```
+
+📌 Gợi ý xử lý:
+
+```java
+data.toUpperCase();
+data.length();
+```
+
+# 2 – TÍNH TOÁN SỐ HỌC
+
+### 📌 Yêu cầu
+
+* Client gửi 2 số nguyên theo định dạng: `a;b`
+* Server trả về:
+
+  * Tổng
+  * Hiệu
+  * Tích
+  * Thương (nếu b ≠ 0)
+
+### 📥 Ví dụ
+
+**Client gửi**
+
+```
+10;5
+```
+
+**Server trả**
+
+```
+Tong=15, Hieu=5, Tich=50, Thuong=2
+```
+
+📌 Gợi ý:
+
+```java
+String[] arr = data.split(";");
+int a = Integer.parseInt(arr[0]);
+```
+
+# 3 – KIỂM TRA SỐ NGUYÊN TỐ
+
+### 📌 Yêu cầu
+
+* Client gửi một số nguyên `n`
+* Server kiểm tra:
+
+  * Có phải số nguyên tố không
+* Trả kết quả về Client
+
+### 📥 Ví dụ
+
+**Client gửi**
+
+```
+17
+```
+
+**Server trả**
+
+```
+17 la so nguyen to
+```
+
+📌 Gợi ý:
+
+```java
+for (int i = 2; i <= Math.sqrt(n); i++)
+```
+
+# 4 – XỬ LÝ MẢNG SỐ
+
+### 📌 Yêu cầu
+
+* Client gửi một dãy số nguyên:
+
+```
+1,3,5,2,8,4
+```
+
+* Server:
+
+  * Tính tổng
+  * Tìm số lớn nhất
+  * Sắp xếp tăng dần
+* Trả kết quả về Client
+
+### 📥 Ví dụ
+
+**Server trả**
+
+```
+Tong=23 | Max=8 | Mang sap xep: 1 2 3 4 5 8
+```
+
+📌 Gợi ý:
+
+```java
+String[] arr = data.split(",");
+Arrays.sort(arr);
+```
+
+# 5 – FILE + TCP + XỬ LÝ
+
+### 📌 Yêu cầu
+
+* Client đọc file `ptb2.txt`
+
+```
+1;2;1
+1;5;6
+```
+
+* Gửi từng dòng lên Server
+* Server giải phương trình bậc 2
+* Ghi kết quả vào file `ketqua.txt`
+* Đồng thời gửi kết quả về Client
+
+### 📥 Ví dụ kết quả
+
+```
+PT: 1x^2 + 2x + 1 = 0 => x = -1
+PT: 1x^2 + 5x + 6 = 0 => x1 = -2, x2 = -3
+```
+
+📌 Gợi ý:
+
+* Dùng `BufferedReader`
+* Ghi file bằng `FileWriter`

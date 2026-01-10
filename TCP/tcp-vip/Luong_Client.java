@@ -1,4 +1,4 @@
-package dau_2251220146;
+package tcp-vip;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -23,7 +23,8 @@ public class Luong_Client extends Thread {
             PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
 
             // tao danh sach chuoi lay du lieu tu file
-            List<String> data = doc_file.docFile("dau_2251220146/input.txt");
+            List<String> data = doc_file.docFile("folder/input.txt");
+
 
             // doc tung dong va gui len server
             for (String line : data) {
@@ -35,6 +36,9 @@ public class Luong_Client extends Thread {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        finally {
+            socket.close();
         }
     }
 }

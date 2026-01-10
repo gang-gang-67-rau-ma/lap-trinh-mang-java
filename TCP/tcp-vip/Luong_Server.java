@@ -1,4 +1,4 @@
-package dau_2251220146;
+package tcp-vip;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -45,13 +45,16 @@ public class Luong_Server extends Thread {
                     String q = "Phương trình: " + a + "x^2 + " + b + "x + " + c + " = 0";
                     String output = q + " => " + result;
                     pw.println(output);
-                    ghi_file.ghiFile(output + "\n", "dau_2251220146/output.txt");
+                    ghi_file.ghiFile(output + "\n", "folder/output.txt");
                 } catch (NumberFormatException e) {
                     pw.println("Dữ liệu không hợp lệ: " + data);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        finally {
+            socket.close();
         }
     }
 
