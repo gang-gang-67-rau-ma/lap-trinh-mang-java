@@ -140,4 +140,4 @@ public class ServerTCP {
 1. CHUỖI ĐỐI XỨNG
 ### Viết chương trình thiết lập và kết nối giữa Client và Server TCP và thực hiện trong luồng xử lý "Chuỗi đối xứng".
 
-## **[Viết chương trình thiết lập và kết nối giữa Client và Server TCP và thực hiện trong luồng xử lý số fibonaci.](https://github.com/gang-gang-67-rau-ma/lap-trinh-mang-java/tree/main/TCP/tcp/fibonaci)**
+## **[Viết chương trình thiết lập và kết nối giữa Client và Server TCP và thực hiện trong luồng xử lý số fibonaci.](https://github.com/gang-gang-67-rau-ma/lap-trinh-mang-java/tree/main/TCP/fibonaci)**
