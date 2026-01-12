@@ -1,5 +1,9 @@
 package palindrome;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 public class serverMain {
     public final static int defaultPort = 5000;
 
@@ -12,6 +16,7 @@ public class serverMain {
                     Socket s = ss.accept();
                     serverThread t = new serverThread(s);
                     t.start();
+                    ss.close();
                 } catch (IOException e) {
                     System.err.println("Connection Error: " + e);
                 }

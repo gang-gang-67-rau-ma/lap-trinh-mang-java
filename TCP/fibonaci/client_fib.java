@@ -22,7 +22,7 @@ public class client_fib {
             os.write(n);
 
             int ch = is.read();
-            System.out.print("Fib : " + ch);
+            System.out.println("Fib : " + ch);
         } catch (IOException e) {
             System.err.println("socket Error:" + e);
         }

@@ -22,16 +22,21 @@ public class serverThread extends Thread {
     }
 
     @Override
-    public void run () {
+    public void run() {
         try {
             InputStream is = s.getInputStream();
             OutputStream os = s.getOutputStream();
-            String ch = is.read();
+            byte[] buffer = new byte[1024];
+            int len = is.read(buffer);
+            String ch = new String(buffer, 0, len);
             String p = palindrome(ch);
-            os.write(p);
+            os.write(p.getBytes());
+            os.flush();
+
             s.close();
         } catch (Exception e) {
-            System.err.println("socket Error:" + e);
+            System.err.println("Socket Error: " + e.getMessage());
         }
     }
+
 }
