@@ -15,13 +15,16 @@ public class ClientMain {
             InputStream is = s.getInputStream();
             OutputStream os = s.getOutputStream();
             Scanner sc = new Scanner(System.in);
+            byte[] buffer = new byte[1024];
 
             System.out.print("Nhap chuoi: ");
             String n = sc.nextLine();
+
             os.write(n.getBytes());
             os.flush();
-            int ch = is.read();
-            System.out.println("Kqua: " + (char) ch);
+            int len = is.read(buffer);
+            String kq = new String(buffer, 0, len);
+            System.out.println("Kqua: " + kq);
 
             sc.close();
             s.close();
