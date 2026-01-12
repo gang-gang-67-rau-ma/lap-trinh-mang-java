@@ -1,8 +1,6 @@
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
+package palindrome;
 
-public class server_fib {
+public class serverMain {
     public final static int defaultPort = 5000;
 
     public static void main(String[] args) {
